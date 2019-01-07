@@ -59,5 +59,4 @@ def callbackHandler(bot, update):
     )
 
 if __name__ == '__main__':
-    pass
-#    main()
+    main()
