@@ -55,7 +55,7 @@ def callbackHandler(bot, update):
         messageText = msg
     elif count == 1:
         count = 0
-        buttonText = "Reveal"
+        buttonText = "Reveal Again"
         messageText = '-' * 20
 
     button = InlineKeyboardButton(
