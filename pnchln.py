@@ -18,8 +18,9 @@ def main():
     updater.start_polling()
 
 def startHandler(bot, update):
-    bot.send_message(chat_id=update.message.chat_id,
-        text="Currently I only work in inline mode, just do @pnchlnBot when chatting.")
+    update.message.reply_text(
+        text="Currently I only work in inline mode, just do @pnchlnBot when chatting."
+    )
 
 #inl = 0
 def inlineHandler(bot, update):
@@ -48,7 +49,7 @@ def callbackHandler(bot, update):
     callback_data = cb.data
     msg = callback_data[:-1]
     count = ord(callback_data[-1])
-    if count == 0: # first time pressing
+    if count == 0:
         count = 1
         buttonText = "Hide Again"
         messageText = msg
