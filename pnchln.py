@@ -37,7 +37,7 @@ def inlineHandler(bot, update):
         reply_markup = InlineKeyboardMarkup([[button]]),
         input_message_content = InputTextMessageContent('-' * 20)
     )]
-    bot.answer_inline_query(inl.id, retMsg)
+    inl.answer(retMsg)
 
 #cb = 0
 def callbackHandler(bot, update):
@@ -59,7 +59,7 @@ def callbackHandler(bot, update):
 
     button = InlineKeyboardButton(
         text = buttonText, callback_data = msg + chr(count))
-    update.callback_query.edit_message_text(
+    cb.edit_message_text(
         text = messageText,
         reply_markup = InlineKeyboardMarkup([[button]])
     )
