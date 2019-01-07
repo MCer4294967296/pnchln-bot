@@ -54,7 +54,7 @@ def callbackHandler(bot, update):
     button = InlineKeyboardButton(
         text = buttonText, callback_data = msg + chr(count))
     update.callback_query.edit_message_text(
-        text = msgText,
+        text = messageText,
         reply_markup = InlineKeyboardMarkup([[button]])
     )
 
