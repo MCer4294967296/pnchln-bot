@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from config import TELEGRAM_BOT_TOKEN as token
-from telegram.ext import Updater, InlineQueryHandler, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, InlineQueryHandler, CallbackQueryHandler
 from telegram import InlineQueryResultArticle, InputTextMessageContent, \
     InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -12,9 +12,14 @@ def main():
                      level=logging.INFO)
     updater = Updater(token=token)
     dispatcher = updater.dispatcher
+    dispatcher.add_handler(CommandHandler('start', startHandler))
     dispatcher.add_handler(InlineQueryHandler(inlineHandler))
     dispatcher.add_handler(CallbackQueryHandler(callbackHandler))
     updater.start_polling()
+
+def startHandler(bot, update):
+    bot.send_message(chat_id=update.message.chat_id,
+        text="Currently I only work in inline mode, just do @pnchlnBot when chatting.")
 
 #inl = 0
 def inlineHandler(bot, update):
@@ -23,6 +28,7 @@ def inlineHandler(bot, update):
     if not inl.query:
         return
     message = inl.query
+
     button = InlineKeyboardButton(
         text = "Reveal", callback_data = message + chr(0))
     retMsg = [InlineQueryResultArticle(
