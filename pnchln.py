@@ -29,7 +29,7 @@ def inlineHandler(bot, update):
         id = message.upper(),
         title = "Hidden message",
         reply_markup = InlineKeyboardMarkup([[button]]),
-        input_message_content = InputTextMessageContent("----------")
+        input_message_content = InputTextMessageContent('-' * 20)
     )]
     bot.answer_inline_query(inl.id, retMsg)
 
@@ -49,7 +49,7 @@ def callbackHandler(bot, update):
     elif count == 1:
         count = 0
         buttonText = "Reveal"
-        messageText = "----------"
+        messageText = '-' * 20
 
     button = InlineKeyboardButton(
         text = buttonText, callback_data = msg + chr(count))
